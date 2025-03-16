@@ -22,7 +22,7 @@ class InstallWithFrontend(install):
 
 
 setuptools.setup(
-    name="streamlit-oauth",
+    name="streamlit-oauth-ich-app",
     version="0.1.14",
     author="Dylan Lu",
     author_email="dnplus@gmail.com",
