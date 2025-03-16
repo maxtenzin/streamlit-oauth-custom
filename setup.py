@@ -4,7 +4,7 @@ from pathlib import Path
 README = (Path(__file__).parent/"README.md").read_text(encoding="utf8")
 
 setuptools.setup(
-    name="streamlit-oauth-ich-app",
+    name="streamlit-oauth",
     version="0.1.14",
     author="Dylan Lu",
     author_email="dnplus@gmail.com",
