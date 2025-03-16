@@ -1,7 +1,25 @@
 import setuptools
 from pathlib import Path
+import os
+import subprocess
+from setuptools import setup, find_packages
+from setuptools.command.install import install
 
 README = (Path(__file__).parent/"README.md").read_text(encoding="utf8")
+
+class InstallWithFrontend(install):
+    """Custom install command to build frontend before installation."""
+
+    def run(self):
+        # Build the frontend
+        frontend_path = os.path.join(os.path.dirname(__file__), "streamlit_oauth_ich_app/frontend")
+        if os.path.exists(frontend_path):
+            print("Building frontend...")
+            subprocess.check_call(["npm", "install"], cwd=frontend_path)
+            subprocess.check_call(["npm", "run", "build"], cwd=frontend_path)
+
+        install.run(self)  # Continue with normal installation
+
 
 setuptools.setup(
     name="streamlit-oauth",
@@ -25,4 +43,7 @@ setuptools.setup(
         "httpx-oauth==0.15.1",
         "python-dotenv==1.0.1"
     ],
+    cmdclass={
+        "install": InstallWithFrontend,  # Use the custom install class
+    },
 )
