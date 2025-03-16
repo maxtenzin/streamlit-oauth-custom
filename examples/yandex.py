@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_oauth import OAuth2Component
+from streamlit_oauth_ich_app import OAuth2Component
 import os
 
 st.title("Yandex OAuth2 Example")

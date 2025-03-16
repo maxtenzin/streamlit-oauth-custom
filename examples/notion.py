@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_oauth import OAuth2Component
+from streamlit_oauth_ich_app import OAuth2Component
 from typing import Any, Dict, List, Optional, Tuple, cast
 import base64
 from httpx_oauth.oauth2 import BaseOAuth2
