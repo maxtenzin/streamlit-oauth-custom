@@ -21,7 +21,7 @@ button.onclick = async () => {
         let popup_url = (new URL(popup.location.href)).toString()
         let urlParams = new URLSearchParams(popup.location.search)
 
-        // if popup url not redirect_uri, wait for redirect to complete 
+        // if popup url not redirect_uri, wait for redirect to complete
         if (!popup_url.startsWith(redirect_uri)) {
           return
         }
@@ -36,9 +36,9 @@ button.onclick = async () => {
 
         return resolve(result)
       } catch (e) {
-        if (e.name === "SecurityError") { 
+        if (e.name === "SecurityError") {
           // ignore cross-site orign, wait for redirect to complete
-          return 
+          return
         }
         return reject(e)
       }
@@ -64,15 +64,15 @@ function onRender(event) {
     icon.style.width = "0px"
     icon.style.height = "0px"
   }
-  
+
   if(data.args["font_size"]) {
-    span.style.fontSize = data.args['font_size']
+    text.style.fontSize = data.args['font_size']
   }
 
   if(data.args["border"]) {
     button.style.border = data.args['border']
   }
-  
+
   if(data.args["border_color"]) {
     console.log(data.args['border_color'])
     button.style.borderColor = data.args['border_color']
