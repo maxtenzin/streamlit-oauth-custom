@@ -7,12 +7,14 @@ from setuptools.command.install import install
 
 README = (Path(__file__).parent/"README.md").read_text(encoding="utf8")
 
+
 class InstallWithFrontend(install):
     """Custom install command to build frontend before installation."""
 
     def run(self):
         # Build the frontend
-        frontend_path = os.path.join(os.path.dirname(__file__), "streamlit_oauth_ich_app/frontend")
+        frontend_path = os.path.join(os.path.dirname(__file__), "streamlit_oauth_ich_app", "frontend")
+        print(frontend_path)
         if os.path.exists(frontend_path):
             print("Building frontend...")
             subprocess.check_call(["npm", "install"], cwd=frontend_path)

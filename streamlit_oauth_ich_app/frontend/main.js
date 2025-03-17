@@ -66,7 +66,7 @@ function onRender(event) {
   }
   
   if(data.args["font_size"]) {
-    button.style.fontSize = data.args['font_size']
+    span.style.fontSize = data.args['font_size']
   }
 
   if(data.args["border"]) {
