@@ -74,15 +74,13 @@ function onRender(event) {
   }
   
   if(data.args["border_color"]) {
+    console.log(data.args['border_color'])
     button.style.borderColor = data.args['border_color']
   }
 
   if(data.args["border_radius"]) {
+    console.log(data.args['border_radius'])
     button.style.borderRadius = data.args['border_radius']
-  }
-
-  if(data.args["use_container_width"]) {
-    button.style.fontSize = data.args['font_size']
   }
 
   if(data.args["use_container_width"]) {
