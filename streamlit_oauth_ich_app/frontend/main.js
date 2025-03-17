@@ -65,6 +65,26 @@ function onRender(event) {
     icon.style.height = "0px"
   }
   
+  if(data.args["font_size"]) {
+    button.style.fontSize = data.args['font_size']
+  }
+
+  if(data.args["border"]) {
+    button.style.border = data.args['border']
+  }
+  
+  if(data.args["border_color"]) {
+    button.style.borderColor = data.args['border_color']
+  }
+
+  if(data.args["border_radius"]) {
+    button.style.borderRadius = data.args['border_radius']
+  }
+
+  if(data.args["use_container_width"]) {
+    button.style.fontSize = data.args['font_size']
+  }
+
   if(data.args["use_container_width"]) {
     button.style.width = "100%"
   }
