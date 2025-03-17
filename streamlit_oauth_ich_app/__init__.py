@@ -15,15 +15,17 @@ _RELEASE = False
 # use streamlit run __init__.py --server.enableCORS=false to run the local dev server
 _RELEASE = True
 
-if not _RELEASE:
-    _authorize_button = components.declare_component(
-        "authorize_button",
-        url="http://localhost:3000",  # vite dev server port
-    )
-else:
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, "frontend/dist")
-    _authorize_button = components.declare_component("authorize_button", path=build_dir)
+
+def load_component(name):
+    if not _RELEASE:
+        return components.declare_component(
+            name,
+            url="http://localhost:3000",  # vite dev server port
+        )
+    else:
+        parent_dir = os.path.dirname(os.path.abspath(__file__))
+        build_dir = os.path.join(parent_dir, "frontend/dist")
+        return components.declare_component(name, path=build_dir)
 
 
 class StreamlitOauthError(Exception):
@@ -98,6 +100,7 @@ class OAuth2Component:
         name,
         redirect_uri,
         scope,
+        component_name,
         height=800,
         width=600,
         key=None,
@@ -132,6 +135,7 @@ class OAuth2Component:
         )
 
         # print(f'generated authorize request: {authorize_request}')
+        _authorize_button = load_component(component_name)
 
         result = _authorize_button(
             authorization_url=authorize_request,
