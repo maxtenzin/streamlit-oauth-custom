@@ -25,7 +25,7 @@ class InstallWithFrontend(install):
 
 setuptools.setup(
     name="streamlit-oauth-ich-app",
-    version="0.1.14",
+    version="0.1.15",
     author="Dylan Lu",
     author_email="dnplus@gmail.com",
     description="Simple OAuth2 authorization code flow for Streamlit",
