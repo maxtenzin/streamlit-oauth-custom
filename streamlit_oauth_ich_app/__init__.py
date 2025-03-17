@@ -73,7 +73,7 @@ class OAuth2Component:
         revocation_endpoint_auth_method=revocation_endpoint_auth_method,
       )
 
-  def authorize_button(self, name, redirect_uri, scope, height=800, width=600, key=None, pkce=None, extras_params={}, icon=None, use_container_width=False, auto_click=False):
+  def authorize_button(self, name, redirect_uri, scope, height=800, width=600, key=None, pkce=None, extras_params={}, icon=None, use_container_width=False, auto_click=False, font_size=None, font_weight=None, border=None, border_color=None, border_radius=None):
     # generate state based on key
     state = _generate_state(key)
     if pkce:
@@ -98,6 +98,11 @@ class OAuth2Component:
       icon=icon,
       use_container_width=use_container_width,
       auto_click=auto_click,
+      font_size=font_size, 
+      font_weight=font_size, 
+      border=font_size, 
+      border_color=font_size, 
+      border_radius=font_size
     )
     # print(f'result: {result}')
 
