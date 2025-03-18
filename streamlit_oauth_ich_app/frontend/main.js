@@ -64,7 +64,8 @@ function onRender(event) {
   if(data.args["name"]) {
     text.textContent = data.args["name"]
   } else {
-    text.textContent = ""
+    text.style.width = "0px"
+    text.style.height = "0px"
   }
 
   if(data.args["icon"]) {
