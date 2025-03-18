@@ -7,7 +7,7 @@ const icon = button.appendChild(document.createElement("span"))
 const text = button.appendChild(document.createElement("span"));
 
 icon.className = "icon"
-text.textContent = "AUTHORIZE"
+// text.textContent = "AUTHORIZE"
 button.onclick = async () => {
   // open in popup window
   var left = (screen.width/2)-(popup_width/2);
