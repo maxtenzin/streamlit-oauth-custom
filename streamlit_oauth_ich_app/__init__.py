@@ -114,6 +114,8 @@ class OAuth2Component:
         border=None,
         border_color=None,
         border_radius=None,
+        icon_width=None,
+        icon_height=None,
     ):
         # generate state based on key
         state = _generate_state(key)
@@ -151,6 +153,8 @@ class OAuth2Component:
             border=border,
             border_color=border_color,
             border_radius=border_radius,
+            icon_width=icon_width,
+            icon_height=icon_height,
         )
         # print(f'result: {result}')
 
