@@ -75,11 +75,11 @@ function onRender(event) {
   }
 
   if(data.args["icon_width"]) {
-    text.style.width = data.args['icon_width']
+    icon.style.width = data.args['icon_width']
   }
 
   if(data.args["icon_height"]) {
-    text.style.height = data.args['icon_height']
+    icon.style.height = data.args['icon_height']
   }
 
   if(data.args["font_size"]) {
