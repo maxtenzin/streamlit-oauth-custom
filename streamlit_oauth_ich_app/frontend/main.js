@@ -59,8 +59,11 @@ function onRender(event) {
   popup_width = data.args["popup_width"]
 
   if(data.args["name"]) {
-    text.textContent =  data.args["name"]
+    text.textContent = data.args["name"]
+  } else {
+    text.textContent = ""
   }
+
   if(data.args["icon"]) {
     icon.style.backgroundImage = `url("${data.args["icon"]}")`
   } else {
