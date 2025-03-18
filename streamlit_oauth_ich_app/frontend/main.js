@@ -57,7 +57,10 @@ function onRender(event) {
   authorization_url = data.args["authorization_url"]
   popup_height = data.args["popup_height"]
   popup_width = data.args["popup_width"]
-  text.textContent =  data.args["name"]
+
+  if(data.args["name"]) {
+    text.textContent =  data.args["name"]
+  }
   if(data.args["icon"]) {
     icon.style.backgroundImage = `url("${data.args["icon"]}")`
   } else {
