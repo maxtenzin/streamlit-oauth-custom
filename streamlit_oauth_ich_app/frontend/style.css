@@ -14,12 +14,13 @@
 } */
 
 button {
+  cursor: pointer;
   border: 2px solid #51F0B0 !important;
   border-radius: 8px;
   background-color: white !important;
   color: #323232 !important;
   height: 45px;
-  width: 100%;
+  /* width: 100%; */
   background-position: 5% 50% !important;
   background-repeat: no-repeat;
   background-size: 28px 16px;
@@ -27,6 +28,13 @@ button {
   font-size: 16px;
   letter-spacing: 0;
   line-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  align-items: center;
 }
 
 span {
