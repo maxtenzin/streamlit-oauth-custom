@@ -4,7 +4,10 @@ import "./style.css"
 const div = document.body.appendChild(document.createElement("div"))
 const button = div.appendChild(document.createElement("button"))
 const icon = button.appendChild(document.createElement("span"))
-const text = button.appendChild(document.createElement("span"))
+let text;
+if (data.args["name"]) {
+  text = button.appendChild(document.createElement("span"));
+}
 icon.className = "icon"
 text.textContent = "AUTHORIZE"
 button.onclick = async () => {
