@@ -4,10 +4,8 @@ import "./style.css"
 const div = document.body.appendChild(document.createElement("div"))
 const button = div.appendChild(document.createElement("button"))
 const icon = button.appendChild(document.createElement("span"))
-let text;
-if (data.args["name"]) {
-  text = button.appendChild(document.createElement("span"));
-}
+const text = button.appendChild(document.createElement("span"));
+
 icon.className = "icon"
 text.textContent = "AUTHORIZE"
 button.onclick = async () => {
@@ -63,6 +61,11 @@ function onRender(event) {
 
   if(data.args["name"]) {
     text.textContent = data.args["name"]
+
+    if(data.args["font_size"]) {
+      text.style.fontSize = data.args['font_size']
+    }
+
   } else {
     text.style.width = "0px"
     text.style.height = "0px"
@@ -81,10 +84,6 @@ function onRender(event) {
 
   if(data.args["icon_height"]) {
     icon.style.height = data.args['icon_height']
-  }
-
-  if(data.args["font_size"]) {
-    text.style.fontSize = data.args['font_size']
   }
 
   if(data.args["border"]) {
