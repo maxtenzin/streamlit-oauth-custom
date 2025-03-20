@@ -5,7 +5,7 @@ import subprocess
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 
-README = (Path(__file__).parent/"README.md").read_text(encoding="utf8")
+README = (Path(__file__).parent / "README.md").read_text(encoding="utf8")
 
 
 class InstallWithFrontend(install):
@@ -13,7 +13,9 @@ class InstallWithFrontend(install):
 
     def run(self):
         # Build the frontend
-        frontend_path = os.path.join(os.path.dirname(__file__), "streamlit_oauth_ich_app", "frontend")
+        frontend_path = os.path.join(
+            os.path.dirname(__file__), "streamlit_oauth_custom", "frontend"
+        )
         print(frontend_path)
         if os.path.exists(frontend_path):
             print("Building frontend...")
@@ -24,7 +26,7 @@ class InstallWithFrontend(install):
 
 
 setuptools.setup(
-    name="streamlit-oauth-ich-app",
+    name="streamlit-oauth-custom",
     version="0.1.15",
     author="Dylan Lu",
     author_email="dnplus@gmail.com",
@@ -43,7 +45,7 @@ setuptools.setup(
         # them here.
         "streamlit>=1.28.1",
         "httpx-oauth==0.15.1",
-        "python-dotenv==1.0.1"
+        "python-dotenv==1.0.1",
     ],
     cmdclass={
         "install": InstallWithFrontend,  # Use the custom install class

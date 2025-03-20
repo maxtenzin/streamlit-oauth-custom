@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_oauth_ich_app import OAuth2Component
+from streamlit_oauth_custom import OAuth2Component
 from httpx_oauth.clients.discord import DiscordOAuth2
 import os
 
@@ -8,7 +8,9 @@ import os
 
 st.title("OAuth2 Client Example")
 
-st.write("This example shows how to use the OAuth2 component to authenticate with a custom OAuth2 provider.")
+st.write(
+    "This example shows how to use the OAuth2 component to authenticate with a custom OAuth2 provider."
+)
 
 # create an OAuth2Component instance
 CLIENT_ID = os.environ.get("DISCORD_CLIENT_ID")

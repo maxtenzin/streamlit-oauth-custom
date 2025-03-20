@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit_oauth_ich_app import OAuth2Component
+from streamlit_oauth_custom import OAuth2Component
 from typing import Any, Dict, List, Optional, Tuple, cast
 import base64
 from httpx_oauth.oauth2 import BaseOAuth2
@@ -34,9 +34,9 @@ class NotionOAuth2(BaseOAuth2):
     ) -> Dict[str, Any]:
         async with self.get_httpx_client() as client:
             data = {
-            "grant_type": "authorization_code",
-            "code": code,
-            "redirect_uri": redirect_uri,
+                "grant_type": "authorization_code",
+                "code": code,
+                "redirect_uri": redirect_uri,
             }
             basic_auth = self.client_id + ":" + self.client_secret
             # base64 encode the basic auth string
@@ -45,7 +45,9 @@ class NotionOAuth2(BaseOAuth2):
                 "Authorization": f"Basic {basic_auth}",
                 "Content-Type": "application/json",
             }
-            response = await client.post(self.access_token_endpoint, headers=headers, json=data) 
+            response = await client.post(
+                self.access_token_endpoint, headers=headers, json=data
+            )
             if response.status_code != 200:
                 raise Exception(response.text)
             response.raise_for_status()
@@ -53,7 +55,9 @@ class NotionOAuth2(BaseOAuth2):
 
 
 st.title("Notion OAuth2 Example")
-st.write("This example shows how to use the OAuth2 component to authenticate with Notion and get the user's email address.")
+st.write(
+    "This example shows how to use the OAuth2 component to authenticate with Notion and get the user's email address."
+)
 
 notion_client = NotionOAuth2(NOTION_OAUTH2_CLIENT_ID, NOTION_OAUTH2_CLIENT_SECRET)
 

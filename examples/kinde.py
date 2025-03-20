@@ -1,11 +1,13 @@
 import streamlit as st
-from streamlit_oauth_ich_app import OAuth2Component
+from streamlit_oauth_custom import OAuth2Component
 import os
 import base64
 import json
 
 st.title("KINDE OIDC Example")
-st.write("This example shows how to use the raw OAuth2 component to authenticate with Kinde (kinde.com)")
+st.write(
+    "This example shows how to use the raw OAuth2 component to authenticate with Kinde (kinde.com)"
+)
 
 # create an OAuth2Component instance
 CLIENT_ID = os.environ.get("KINDE_CLIENT_ID")
@@ -14,10 +16,12 @@ AUTHORIZE_ENDPOINT = f"https://{KINDE_DOMAIN}/oauth2/auth"
 TOKEN_ENDPOINT = f"https://{KINDE_DOMAIN}/oauth2/token"
 REVOKE_ENDPOINT = f"https://{KINDE_DOMAIN}/oauth2/revoke"
 
+
 def base64url_decode(input):
     # Make input length a multiple of 4
-    padding = '=' * (-len(input) % 4)
+    padding = "=" * (-len(input) % 4)
     return base64.urlsafe_b64decode(input + padding)
+
 
 if "auth" not in st.session_state:
     # create a button to start the OAuth2 flow
@@ -27,9 +31,9 @@ if "auth" not in st.session_state:
         token_endpoint=TOKEN_ENDPOINT,
         refresh_token_endpoint=TOKEN_ENDPOINT,
         revoke_token_endpoint=REVOKE_ENDPOINT,
-        token_endpoint_auth_method="client_secret_post"
+        token_endpoint_auth_method="client_secret_post",
     )
-    
+
     result = oauth2.authorize_button(
         name="Continue with Kinde",
         icon="https://kinde.com/icon.svg",
@@ -37,9 +41,9 @@ if "auth" not in st.session_state:
         scope="openid email profile offline",
         key="kinde",
         use_container_width=True,
-        pkce='S256',
+        pkce="S256",
     )
-    
+
     if result:
         st.write(result)
 
@@ -47,9 +51,9 @@ if "auth" not in st.session_state:
         id_token = result["token"]["id_token"]
 
         # # verify the signature is an optional step for security
-        header_b64, payload_b64, signature_b64 = id_token.split('.')
+        header_b64, payload_b64, signature_b64 = id_token.split(".")
 
-        payload = json.loads(base64url_decode(payload_b64).decode('utf-8'))
+        payload = json.loads(base64url_decode(payload_b64).decode("utf-8"))
 
         email = payload["email"]
         st.session_state["auth"] = email
