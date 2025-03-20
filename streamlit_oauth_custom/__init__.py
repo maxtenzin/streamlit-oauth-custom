@@ -69,7 +69,6 @@ class OAuth2Component:
         self,
         client_id=None,
         client_secret=None,
-        authroize_endpoint=None,
         token_endpoint=None,
         refresh_token_endpoint=None,
         revoke_token_endpoint=None,
@@ -80,7 +79,6 @@ class OAuth2Component:
         revocation_endpoint_auth_method: OAuth2ClientAuthMethod = "client_secret_basic",
     ):
         # Handle typo in backwards-compatible way
-        authorize_endpoint = authorize_endpoint or authroize_endpoint
         if client:
             self.client = client
         else:

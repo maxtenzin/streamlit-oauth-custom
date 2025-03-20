@@ -18,15 +18,18 @@
 
 button {
   cursor: pointer;
-  border: 2px solid #51F0B0 !important;
-  border-radius: 8px;
+  border-style: solid !important;
+  border-width: 2px !important;
+  border-color: #51F0B0;
+  border-radius: 50%;
   background-color: white !important;
   color: #323232 !important;
-  height: 45px;
-  /* width: 100%; */
-  background-position: 5% 50% !important;
+  height: 55px;
+  width: 55px;
+  padding: 0;
+  background-position: center !important;
   background-repeat: no-repeat;
-  background-size: 28px 16px;
+  background-size: 20px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 16px;
   letter-spacing: 0;
@@ -34,6 +37,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 
 div {
@@ -51,10 +55,10 @@ span {
 .icon {
   width: 20px;
   height: 20px;
-  margin-right: 0.5em;
+  margin: 0;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: 50%;
+  background-position: center;
   display: inline-block;
 }
 
